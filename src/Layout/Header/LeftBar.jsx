@@ -21,13 +21,13 @@ const Leftbar = () => {
                 {mixLayout ?
                     <div className="logo-wrapper">
                         <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                            <Image attrImage={{ className: 'img-fluid d-inline', src: `${require('../../assets/images/logo/logo.png')}`, alt: '' }} />
+                            <span className="icofont-2x"> {"CEPO"} </span>
                         </Link>
                     </div>
                     :
                     <div className="dark-logo-wrapper">
                         <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                            <Image attrImage={{ className: 'img-fluid d-inline', src: `${require('../../assets/images/logo/dark-logo.png')}`, alt: '' }} />
+                            <span className="icofont-2x"> {"CEPO"} </span>
                         </Link>
                     </div>
                 }
