@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Btn } from "../../../AbstractElements";
 import { useNavigate } from "react-router-dom";
 import man from "../../../assets/images/dashboard/1.png";
+import {oauthSignIn} from "../../../api/member/signin";
 
 const GoogleCus = () => {
   const history = useNavigate();
@@ -15,7 +16,9 @@ const GoogleCus = () => {
   }, [value, name]);
 
   const googleAuth = async () => {
-    history(`${process.env.PUBLIC_URL}/dashboard/default`);
+    // history(`${process.env.REACT_APP_API_URL}/member/oauth/loginInfo`);
+    let response = await oauthSignIn();
+    console.log(response)
   };
 
   return (

@@ -12,7 +12,7 @@ import DatewidgetCard from "./DateWidgetsCard";
 const Dashboard = () => {
   return (
       <Fragment>
-        <Breadcrumbs mainTitle="General Widget" parent="Widgets" title="General" />
+        <Breadcrumbs mainTitle="" parent="홈" title="메인" />
         <Container fluid={true} className="general-widget">
           <Row>
             <EarningsCard />

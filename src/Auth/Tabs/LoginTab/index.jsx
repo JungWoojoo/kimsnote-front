@@ -30,7 +30,7 @@ const Login = ({ selected }) => {
     setEmail("test@gmail.com");
     setPassword("test123");
     if (email !== "" && password !== "") {
-      localStorage.setItem("login", true);
+      localStorage.setItem("member", true);
       window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
     }
   };
@@ -39,7 +39,7 @@ const Login = ({ selected }) => {
     <Fragment>
       <Form className="theme-form">
         <H4>Sign </H4>
-        <P>{"Enter your email & password to login"}</P>
+        <P>{"Enter your email & password to member"}</P>
         <FormGroup>
           <Label className="col-form-label">{EmailAddress}</Label>
           <Input className="form-control" type="email" required="" onChange={(e) => setEmail(e.target.value)} defaultValue={email} />

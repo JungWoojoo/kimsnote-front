@@ -2,13 +2,14 @@ import React, {Fragment, useEffect, useState} from "react";
 import {Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import {Btn, H4, P} from "../AbstractElements";
 import {EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
-import {toast} from "react-toastify";
 import man from "../assets/images/dashboard/1.png";
 import SocialAuth from "./Tabs/LoginTab/SocialAuth";
+import {signIn} from "../api/member/signin";
+import {toast} from "react-toastify";
 
 const Login = ({ selected }) => {
-  const [email, setEmail] = useState("test@gmail.com");
-  const [password, setPassword] = useState("test123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [togglePassword, setTogglePassword] = useState(false);
   // const history = useNavigate();
@@ -25,15 +26,21 @@ const Login = ({ selected }) => {
     e.preventDefault();
     setLoading(true);
     setValue(man);
-    setName("김민주");
-    setEmail("test@gmail.com");
-    setPassword("test123");
-    if (email === "test@gmail.com" && password === "test123") {
-      localStorage.setItem("login", true);
-      window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
-      setLoading(false);
+    const param = {
+      email: email,
+      password: password
+    }
+    console.log(param)
+
+    let response = await signIn(param);
+    console.log(response)
+    if(response.data.status === "success"){
+        localStorage.setItem("member", true);
+        window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
+        setLoading(false);
     } else {
-      toast.error("이메일 또는 비밀번호가 일치하지 않습니다.");
+      console.log(response.data.exception.errorMessage)
+      toast.error(response.data.exception.errorMessage);
       setLoading(false);
     }
   };
@@ -50,11 +57,13 @@ const Login = ({ selected }) => {
                   <P> {"이메일과 비밀번호를 입력해 주세요"} </P>
                   <FormGroup>
                     <Label className="col-form-label">{EmailAddress}</Label>
-                    <Input className="form-control" type="email" required="" onChange={(e) => setEmail(e.target.value)} defaultValue={email} />
+                    <Input className="form-control" type="email" required=""
+                           onChange={(e) => setEmail(e.target.value)} defaultValue={email} />
                   </FormGroup>
                   <FormGroup className="position-relative">
                     <Label className="col-form-label">{Password}</Label>
-                    <Input className="form-control" type={togglePassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} defaultValue={password} required="" />
+                    <Input className="form-control" type={togglePassword ? "text" : "password"}
+                           onChange={(e) => setPassword(e.target.value)} defaultValue={password} required="" />
                     <div className="show-hide" onClick={() => setTogglePassword(!togglePassword)}>
                       <span className={togglePassword ? "" : "show"}></span>
                     </div>
