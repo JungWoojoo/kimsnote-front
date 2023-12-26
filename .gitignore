@@ -9,3 +9,6 @@ filename.txt
 
 # Ignore all .log files
 *.log
+
+# env
+.env.development
