@@ -25,8 +25,8 @@
 18. Coming soon CSS
 19. Contacts CSS 
 20. Custom theme option CSS
-21. Dashboard 2 CSS
-22. Dashboard default CSS
+21. Default 2 CSS
+22. Default default CSS
 23. Datatable CSS
 24. Datepicker CSS
 25. Dropdown CSS
@@ -96,8 +96,10 @@
 @import "utils/variables";
 
 :root {
-    --theme-default: #26695c;
-    --theme-secondary: #c29873;
+    //--theme-default: #26695c;
+    //--theme-secondary: #c29873;
+    --theme-default: #f3afba;
+    --theme-secondary: #070000;
 }
 
 @import "theme/general";

@@ -1,7 +1,7 @@
 /**=====================
   49. Authentication CSS Start
 ==========================**/
-// login page //
+// member page //
 .show-hide {
   position: absolute;
   top: 18px;
@@ -14,11 +14,11 @@
     font-size: 13px;
     color: var(--theme-default);
     .show-hide span:before {
-      content: "hide";
+      content: "숨기기";
     }
     &.show {
       &:before {
-        content: "show";
+        content: "보기";
       }
     }
   }

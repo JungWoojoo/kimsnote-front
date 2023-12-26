@@ -99,7 +99,7 @@ const Searchbar = () => {
                                 <div className="Typeahead Typeahead--twitterUsers">
                                     <div className="search-bg" >
                                         <i className="fa fa-search" onClick={() => openSearch()}></i>
-                                        <Input className={`form-control-plaintext searchIcon ${openResp ? 'open' : ''}`} type="text" placeholder="Search here" defaultValue={searchValue} onChange={(e) => handleSearchKeyword(e.target.value)} />
+                                        <Input className={`form-control-plaintext searchIcon ${openResp ? 'open' : ''}`} type="text" placeholder="검색어를 입력해 주세요" defaultValue={searchValue} onChange={(e) => handleSearchKeyword(e.target.value)} />
                                     </div>
                                     <ListOfMenu searchValue={searchValue} searchResult={searchResult} removeFix={removeFix} searchBar={true} searchToggle={searchToggle} />
                                     <EmpltyClass searchIcon={searchIcon} search={true} />

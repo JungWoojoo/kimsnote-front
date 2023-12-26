@@ -245,7 +245,7 @@ export const BillingDetails = "Billing Details";
 export const FirstName = "First Name";
 export const LastName = "Last Name";
 export const Phone = "Phone";
-export const EmailAddress = "Email Address";
+export const EmailAddress = "이메일";
 export const Country = "Country";
 
 export const CountryMenu = ["India", "South Africa", "United State", "Australia"];
@@ -309,18 +309,18 @@ export const UserProfileDesc3 =
   "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consecteturContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur";
 export const Like = "Like";
 
-export const MyProfile = "My Profile";
+export const MyProfile = "내 프로필";
 export const Bio = "Bio";
 export const City = "City";
-export const Password = "Password";
+export const Password = "비밀번호";
 export const Website = "Website";
-export const Save = "Save";
-export const EditProfile = "Edit Profile";
+export const Save = "저장";
+export const EditProfile = "프로필 수정";
 export const Company = "Company";
 export const Username = "Username";
 export const UsersCountryMenu = ["--Select--", "Germany", "Canada", "Usa", "Aus"];
 export const AboutMe = "About Me";
-export const UpdateProfile = "Update Profile";
+export const UpdateProfile = "수정";
 export const UsersTableTitle = "Add projects And Upload";
 export const UsersTableHeader = ["Project Name", "Date", "Status", "Price", ""];
 export const Edit = "Edit";
@@ -1162,11 +1162,11 @@ export const CustomTableColor = "Custom Table Color";
 export const CustomTableColorHoverStripped = "Custom Table Color with Hover and Stripped";
 
 // pages
-export const RememberPassword = "Remember password";
-export const ForgotPassword = "Forgot password?";
-export const SignIn = "Sign In";
-export const SignUp = "Sign Up";
-export const CreateAccount = "Create Account";
+export const RememberPassword = "비밀번호 기억하기";
+export const ForgotPassword = "비밀번호가 기억이 안나세요?";
+export const SignIn = "로그인";
+export const SignUp = "회원가입";
+export const CreateAccount = "계정 만들기";
 
 export const EnterPassword = "Enter your Password";
 export const Unlock = "Unlock";

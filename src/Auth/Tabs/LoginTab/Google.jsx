@@ -15,7 +15,9 @@ const GoogleCus = () => {
   }, [value, name]);
 
   const googleAuth = async () => {
-    history(`${process.env.PUBLIC_URL}/dashboard/default`);
+    window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/google`
+    // let response = await oauthSignIn();
+    // console.log(response)
   };
 
   return (

@@ -8,8 +8,10 @@ export class ConfigDB {
       sidebar_setting: "default-sidebar",
     },
     color: {
-      primary_color: "#26695c",
-      secondary_color: "#c29873",
+      primary_color: "#f3afba",
+      secondary_color: "#070000",
+      // primary_color: "#26695c",
+      // secondary_color: "#c29873",
       mix_background_layout: "light-only",
     },
     router_animation: "fadeIn",

@@ -209,11 +209,11 @@
     color: var(--theme-default);
     &.show {
       &:before {
-        content: "show";
+        content: "보기";
       }
     }
     &:before {
-      content: "hide";
+      content: "가리기";
     }
   }
 }

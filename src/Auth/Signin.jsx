@@ -1,18 +1,18 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { Btn, H4, P } from "../AbstractElements";
-import { EmailAddress, ForgotPassword, Password, RememberPassword } from "../Constant";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import React, {Fragment, useEffect, useState} from "react";
+import {Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
+import {Btn, H4, P} from "../AbstractElements";
+import {EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
 import man from "../assets/images/dashboard/1.png";
 import SocialAuth from "./Tabs/LoginTab/SocialAuth";
+import {signIn} from "../api/member/signin";
+import {toast} from "react-toastify";
 
 const Login = ({ selected }) => {
-  const [email, setEmail] = useState("test@gmail.com");
-  const [password, setPassword] = useState("test123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [togglePassword, setTogglePassword] = useState(false);
-  const history = useNavigate();
+  // const history = useNavigate();
 
   const [value, setValue] = useState(localStorage.getItem("profileURL" || man));
   const [name, setName] = useState(localStorage.getItem("Name"));
@@ -26,15 +26,21 @@ const Login = ({ selected }) => {
     e.preventDefault();
     setLoading(true);
     setValue(man);
-    setName("Emay Walter");
-    setEmail("test@gmail.com");
-    setPassword("test123");
-    if (email === "test@gmail.com" && password === "test123") {
-      localStorage.setItem("login", true);
-      window.location.href = `${process.env.PUBLIC_URL}/general/sample_page`;
-      setLoading(false);
+    const param = {
+      email: email,
+      password: password
+    }
+    console.log(param)
+
+    let response = await signIn(param);
+    console.log(response)
+    if(response.data.status === "success"){
+        localStorage.setItem("member", true);
+        window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
+        setLoading(false);
     } else {
-      toast.error("Incorrect Password or Username!");
+      console.log(response.data.exception.errorMessage)
+      toast.error(response.data.exception.errorMessage);
       setLoading(false);
     }
   };
@@ -47,15 +53,17 @@ const Login = ({ selected }) => {
             <div className="login-card">
               <div className="login-main login-tab">
                 <Form className="theme-form">
-                  <H4>Sign </H4>
-                  <P>{"Enter your email & password to login"}</P>
+                  <H4> {"로그인"} </H4>
+                  <P> {"이메일과 비밀번호를 입력해 주세요"} </P>
                   <FormGroup>
                     <Label className="col-form-label">{EmailAddress}</Label>
-                    <Input className="form-control" type="email" required="" onChange={(e) => setEmail(e.target.value)} defaultValue={email} />
+                    <Input className="form-control" type="email" required=""
+                           onChange={(e) => setEmail(e.target.value)} defaultValue={email} />
                   </FormGroup>
                   <FormGroup className="position-relative">
                     <Label className="col-form-label">{Password}</Label>
-                    <Input className="form-control" type={togglePassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} defaultValue={password} required="" />
+                    <Input className="form-control" type={togglePassword ? "text" : "password"}
+                           onChange={(e) => setPassword(e.target.value)} defaultValue={password} required="" />
                     <div className="show-hide" onClick={() => setTogglePassword(!togglePassword)}>
                       <span className={togglePassword ? "" : "show"}></span>
                     </div>
@@ -70,7 +78,7 @@ const Login = ({ selected }) => {
                     <a className="link" href="#javascript">
                       {ForgotPassword}
                     </a>
-                    <Btn attrBtn={{ color: "primary", className: "btn-block", disabled: loading ? loading : loading, onClick: (e) => loginAuth(e) }}>Login</Btn>
+                    <Btn attrBtn={{ color: "primary", className: "btn-block", disabled: loading ? loading : loading, onClick: (e) => loginAuth(e) }}> {"로그인"} </Btn>
                   </div>
                   <SocialAuth />
                 </Form>
