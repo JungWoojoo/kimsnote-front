@@ -15,8 +15,8 @@ const GoogleCus = () => {
   }, [value, name]);
 
   const googleAuth = async () => {
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE}&redirect_uri=http://localhost:48080/login/oauth2/code/google&response_type=code&scope=profile`
-    // window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/google`
+    // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE}&redirect_uri=http://localhost:48080/api/login/oauth2/code/google&response_type=code&scope=profile`
+    window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/google`
     // let response = await oauthSignIn();
     // console.log(response)
   };
