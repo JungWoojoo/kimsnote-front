@@ -7,7 +7,10 @@ const Callback = () => {
 
   const { user } = useAuth0();
 
+  let param = useParams();
+
   useEffect(() => {
+    console.log(param.code)
     if (user) {
       localStorage.setItem('auth0_profile', JSON.stringify(user));
       localStorage.setItem('authenticated', true);
