@@ -3,6 +3,11 @@ import Loader from '../Layout/Loader';
 import { useAuth0 } from '@auth0/auth0-react';
 import {useParams} from "react-router-dom";
 
+/**
+ * 구글에서 콜백
+ * @returns {Element}
+ * @constructor
+ */
 const Callback = () => {
 
   const { user } = useAuth0();
