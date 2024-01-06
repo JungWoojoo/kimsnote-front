@@ -1,24 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 
-const Loader = () => {
-
-    const [show, setShow] = useState(true);
+const Loader = ({...props}) => {
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setShow(false);
-        }, 1000);
-
-        return () => {
-            clearTimeout(timeout);
-        };
-
-    }, [show]);
+        console.log(props.loading)
+    }, [props.loading]);
 
     return (
         <Fragment>
-            <div className={`loader-wrapper ${show ? '' : 'loderhide'}`}>
+            <div className={`loader-wrapper ${!props.loading? '' : 'loderhide'}`}>
                 <div className="theme-loader">
                     <div className="loader-p"></div>
                 </div>
