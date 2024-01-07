@@ -4,7 +4,7 @@ import {Btn, H4, P} from "../AbstractElements";
 import {EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
 import man from "../assets/images/dashboard/1.png";
 import SocialAuth from "./Tabs/LoginTab/SocialAuth";
-import {signIn} from "../api/login/signin";
+import {signIn} from "../api/login/Login";
 import {toast} from "react-toastify";
 import Cookies from "js-cookie";
 

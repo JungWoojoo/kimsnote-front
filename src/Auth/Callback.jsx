@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Loader from '../Layout/Loader';
 import {useParams} from "react-router-dom";
-import {oauthSignIn} from "../api/login/signin";
+import {oauthSignIn} from "../api/login/Login";
 import Cookies from "js-cookie";
 
 /**
