@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Loader from '../Layout/Loader';
-import { useAuth0 } from '@auth0/auth0-react';
 import {useParams} from "react-router-dom";
+import {oauthSignIn} from "../api/login/Login";
+import Cookies from "js-cookie";
 
 /**
  * 구글에서 콜백
@@ -10,22 +11,32 @@ import {useParams} from "react-router-dom";
  */
 const Callback = () => {
 
-  const { user } = useAuth0();
-
-  let param = useParams();
+  const { registrationId, token}= useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log(param.code)
-    if (user) {
-      localStorage.setItem('auth0_profile', JSON.stringify(user));
-      localStorage.setItem('authenticated', true);
-      // window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
+    console.log(registrationId)
+    console.log(token)
+    const param = {
+      registrationId: registrationId,
+      token:token
     }
+
+    oauthSignIn(param)
+        .then((r) => {
+            console.log(r)
+            if(r.data.status === "success"){
+              Cookies.set('Authorization', r.data.data.accessToken)
+              Cookies.set('refresh_token', r.data.data.refreshToken)
+              setLoading(true)
+              window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
+            }
+        })
   });
 
   return (
     <div>
-      <Loader />
+      <Loader loading={loading} />
     </div>
   );
 

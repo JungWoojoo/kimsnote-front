@@ -30,7 +30,7 @@ api.interceptors.response.use((response) => {
             const reissueUrl = `${process.env.REACT_APP_API_URL}/auth/reissue`;
             const param = {
                 accessTk: cookie.load('Authorization'),
-                refreshTk: cookie.load('refreshTk'),
+                refreshTk: cookie.load('refresh_token'),
             };
             try {
                 const response = await api.post(reissueUrl, param);

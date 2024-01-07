@@ -4,8 +4,9 @@ import {Btn, H4, P} from "../AbstractElements";
 import {EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
 import man from "../assets/images/dashboard/1.png";
 import SocialAuth from "./Tabs/LoginTab/SocialAuth";
-import {signIn} from "../api/member/signin";
+import {signIn} from "../api/login/Login";
 import {toast} from "react-toastify";
+import Cookies from "js-cookie";
 
 const Login = ({ selected }) => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,8 @@ const Login = ({ selected }) => {
     console.log(response)
     if(response.data.status === "success"){
         localStorage.setItem("member", true);
+      Cookies.set('Authorization', response.data.data.accessToken)
+      Cookies.set('refresh_token', response.data.data.refreshToken)
         window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
         setLoading(false);
     } else {

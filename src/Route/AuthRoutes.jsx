@@ -1,5 +1,5 @@
 import Callback from "../Auth/Callback";
 
 export const authRoutes = [
-  // { path: `${process.env.REACT_APP_URL}/oauth2/redirect/:token`, Component: <Callback /> },
+  { path: `${process.env.PUBLIC_URL}/oauth2/redirect/:registrationId/:token`, Component: <Callback /> },
 ];
