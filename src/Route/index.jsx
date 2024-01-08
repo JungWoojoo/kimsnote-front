@@ -1,11 +1,9 @@
-import React from "react";
-import { Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import Callback from "../Auth/Callback";
+import React, {Suspense, useEffect, useState} from "react";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Loader from "../Layout/Loader";
-import { authRoutes } from "./AuthRoutes";
+import {authRoutes} from "./AuthRoutes";
 import LayoutRoutes from "../Route/LayoutRoutes";
-import Signin from "../Auth/Login";
+import Login from "../Auth/Login";
 import PrivateRoute from "./PrivateRoute";
 
 const Routers = () => {
@@ -28,17 +26,17 @@ const Routers = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path={"/"} element={<PrivateRoute />}>
-              {currentUser !== null || authenticated ? (
+              {/*{currentUser !== null || authenticated ? (*/}
                 <>
                   <Route exact path={`${process.env.PUBLIC_URL}`} element={<Navigate to={`${process.env.PUBLIC_URL}/dashboard/default`} />} />
                   <Route exact path={`/`} element={<Navigate to={`${process.env.PUBLIC_URL}/dashboard/default`} />} />
                 </>
-              ) : (
-                ""
-              )}
+               {/*) : (*/}
+               {/*  ""*/}
+               {/*)}*/}
               <Route path={`/*`} element={<LayoutRoutes />} />
             </Route>
-            <Route exact path={`${process.env.PUBLIC_URL}/login`} element={<Signin />} />
+            <Route exact path={`${process.env.PUBLIC_URL}/login`} element={<Login />} />
             {authRoutes.map(({ path, Component }, i) => (
               <Route path={path} element={Component} key={i} />
             ))}
