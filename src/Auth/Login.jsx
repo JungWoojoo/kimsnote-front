@@ -37,8 +37,8 @@ const Login = ({ selected }) => {
     console.log(response)
     if(response.data.status === "success"){
         localStorage.setItem("member", true);
-      Cookies.set('Authorization', response.data.data.accessToken)
-      Cookies.set('refresh_token', response.data.data.refreshToken)
+        Cookies.set('Authorization', response.data.data.accessToken)
+        Cookies.set('refresh_token', response.data.data.refreshToken)
         window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
         setLoading(false);
     } else {

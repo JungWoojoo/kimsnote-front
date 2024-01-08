@@ -1122,7 +1122,7 @@ export const Radios = "Radios";
 export const Checkboxes = "Checkboxes";
 
 export const FormWizardWithIcon = "Form Wizard With Icon";
-export const ConfirmPassword = "Confirm Password";
+export const ConfirmPassword = "비밀번호 확인";
 export const DD = "DD";
 export const MM = "MM";
 export const YY = "YY";
