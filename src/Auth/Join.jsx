@@ -1,10 +1,14 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import {Btn, H4, P} from "../AbstractElements";
 import {ConfirmPassword, EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
 import SocialAuth from "./Tabs/LoginTab/SocialAuth";
 
 const Join = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+
     return (
         <Fragment>
             <div className="p-0 container-fluid">
