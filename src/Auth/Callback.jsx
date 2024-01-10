@@ -3,6 +3,7 @@ import Loader from '../Layout/Loader';
 import {useParams} from "react-router-dom";
 import {oauthSignIn} from "../api/login/Login";
 import Cookies from "js-cookie";
+import loginStore from "../Store/login/login";
 
 /**
  * 구글에서 콜백
@@ -12,11 +13,9 @@ import Cookies from "js-cookie";
 const Callback = () => {
 
   const { registrationId, token}= useParams();
-  const [loading, setLoading] = useState(false);
+  const {isLogin, login} = loginStore();
 
   useEffect(() => {
-    console.log(registrationId)
-    console.log(token)
     const param = {
       registrationId: registrationId,
       token:token
@@ -28,15 +27,19 @@ const Callback = () => {
             if(r.data.status === "success"){
               Cookies.set('Authorization', r.data.data.accessToken)
               Cookies.set('refresh_token', r.data.data.refreshToken)
-              setLoading(true)
-              window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
+              login();
+              // window.location.href = `${process.env.PUBLIC_URL}/dashboard/default`;
             }
         })
-  });
+  },[]);
+
+    useEffect(() => {
+        console.log(isLogin)
+    }, [isLogin]);
 
   return (
     <div>
-      <Loader loading={loading} />
+      <Loader loading={isLogin} />
     </div>
   );
 

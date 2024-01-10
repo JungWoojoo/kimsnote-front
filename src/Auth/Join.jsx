@@ -35,7 +35,7 @@ const Join = () => {
                                     <FormGroup className="position-relative">
                                         <Label className="col-form-label">{ConfirmPassword}</Label>
                                         <Input className="form-control" type={togglePassword ? "text" : "password"}
-                                               onChange={(e) => setConfirmPassword(e.target.value)} defaultValue={password} required="" />
+                                               onChange={(e) => setConfirmPassword(e.target.value)} defaultValue={confirmPassword} required="" />
                                         <div className="show-hide" onClick={() => setTogglePassword(!togglePassword)}>
                                             <span className={togglePassword ? "" : "show"}></span>
                                         </div>
