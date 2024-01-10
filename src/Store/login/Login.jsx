@@ -8,10 +8,11 @@ const loginStore = create((set) => ({
         const rt = Cookies.get('refresh_token');
         if (at && rt) {
             set({ isLogin: true });
+            localStorage.setItem('authenticated', true);
         }
     },
     logout: () => {
-        set({ isLoggedIn: false });
+        set({ isLogin: false });
         Cookies.remove('Authorization');
         Cookies.remove('refresh_token');
     },

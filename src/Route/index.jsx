@@ -15,10 +15,13 @@ const Routers = () => {
     setAuthenticated(JSON.parse(localStorage.getItem("authenticated")));
     console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
     console.disableYellowBox = true;
+    console.log(abortController)
     return () => {
       abortController.abort();
     };
   }, []);
+
+  console.log(authenticated)
 
   return (
     <BrowserRouter basename={"/"}>
