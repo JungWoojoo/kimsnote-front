@@ -2,12 +2,20 @@ import React, {Fragment, useState} from 'react';
 import {Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import {Btn, H4, P} from "../AbstractElements";
 import {ConfirmPassword, EmailAddress, ForgotPassword, Password, RememberPassword} from "../Constant";
-import SocialAuth from "./Tabs/LoginTab/SocialAuth";
 
 const Join = () => {
+    const [loading, setLoading] = useState(false);
+    const [togglePassword, setTogglePassword] = useState(false);
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const joinBtn = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+    }
 
     return (
         <Fragment>
@@ -35,7 +43,7 @@ const Join = () => {
                                     <FormGroup className="position-relative">
                                         <Label className="col-form-label">{ConfirmPassword}</Label>
                                         <Input className="form-control" type={togglePassword ? "text" : "password"}
-                                               onChange={(e) => setConfirmPassword(e.target.value)} defaultValue={password} required="" />
+                                               onChange={(e) => setConfirmPassword(e.target.value)} defaultValue={confirmPassword} required="" />
                                         <div className="show-hide" onClick={() => setTogglePassword(!togglePassword)}>
                                             <span className={togglePassword ? "" : "show"}></span>
                                         </div>
@@ -52,7 +60,7 @@ const Join = () => {
                                         <a className="link" href="#javascript">
                                             {ForgotPassword}
                                         </a>
-                                        <Btn attrBtn={{ color: "primary", className: "btn-block", disabled: loading ? loading : loading, onClick: (e) => loginAuth(e) }}> {"로그인"} </Btn>
+                                        <Btn attrBtn={{ color: "primary", className: "btn-block", disabled: loading ? loading : loading, onClick: (e) => joinBtn(e) }}> {"가입하기"} </Btn>
                                     </div>
                                 </Form>
                             </div>
