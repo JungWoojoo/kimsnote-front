@@ -12,7 +12,7 @@ const SocialAuth = () => {
                     <GoogleCus />
                 </div>
             </div>
-            <P attrPara={{ className: 'mt-4 mb-0' }} >{'아직 회원이 아니신가요?'}<a className="ms-2" href="#javascript">{CreateAccount}</a></P>
+            <P attrPara={{ className: 'mt-4 mb-0' }} >{'아직 회원이 아니신가요?'}<a className="ms-2" href="/join">{CreateAccount}</a></P>
         </Fragment>
     );
 };
