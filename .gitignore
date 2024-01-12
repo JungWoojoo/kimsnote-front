@@ -3,6 +3,7 @@
 
 # Ignore node_modules directory
 node_modules/
+build/
 
 # Ignore specific files
 filename.txt
